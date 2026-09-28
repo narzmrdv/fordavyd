@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TwA — Travel with Alina | Туристическое агентство</title>
+<meta name="description" content="TwA — Travel with Alina. Туристическое агентство, лидер продаж по версии туроператоров. Подбор и бронирование туров, поддержка 24/7, собственное мобильное приложение.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1624;
+  --navy-2:#11213a;
+  --navy-3:#1a2d4a;
+  --gold:#c9a24a;
+  --gold-2:#e4c77e;
+  --gold-dark:#a8832e;
+  --cream:#f8f4ec;
+  --cream-2:#efe7d6;
+  --ink:#1b2433;
+  --muted:#5d6675;
+  --white:#fff;
+  --wa:#25d366;
+  --radius:18px;
+  --shadow:0 20px 50px -20px rgba(11,22,36,.35);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px;scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar{display:none}
+body{font-family:var(--sans);font-size:18px;line-height:1.65;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px,100% - 32px);margin-inline:auto}
+.gold{color:var(--gold)}
+.serif{font-family:var(--serif)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:999px;font-weight:700;font-size:17px;letter-spacing:.2px;cursor:pointer;border:2px solid transparent;transition:.25s;white-space:nowrap}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold) 55%,var(--gold-dark));color:var(--navy);box-shadow:0 10px 30px -10px rgba(201,162,74,.8)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(201,162,74,.9)}
+.btn-outline{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-outline:hover{background:#fff;color:var(--navy)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{filter:brightness(1.07);transform:translateY(-2px)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-3)}
+
+/* ---------- section heading ---------- */
+.section{padding:100px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark)}
+.eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:currentColor}
+.h2{font-family:var(--serif);font-weight:600;font-size:clamp(32px,4.4vw,52px);line-height:1.15;margin:14px 0 18px;color:var(--navy)}
+.lead{font-size:19px;color:var(--muted);max-width:720px}
+.center{text-align:center}
+.center .lead{margin-inline:auto}
+.dark{background:var(--navy);color:#e8ecf2}
+.dark .h2{color:#fff}
+.dark .lead{color:#b7c0cd}
+.dark .eyebrow{color:var(--gold)}
+.cream{background:var(--cream)}
+
+/* ---------- top bar ---------- */
+.topbar{background:#070f19;color:#aab4c2;font-size:14px}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:9px 0}
+.topbar a:hover{color:var(--gold)}
+.topbar-left{display:flex;gap:26px;flex-wrap:wrap}
+.topbar-left span{display:inline-flex;align-items:center;gap:8px}
+.topbar-left svg{width:15px;height:15px;color:var(--gold)}
+.socials-mini{display:flex;gap:14px}
+.socials-mini svg{width:17px;height:17px}
+
+/* ---------- header ---------- */
+.header{position:sticky;top:0;z-index:50;background:rgba(11,22,36,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,162,74,.35)}
+.header .container{display:flex;align-items:center;justify-content:space-between;gap:24px;height:84px}
+.logo{display:flex;align-items:center;gap:14px;color:#fff}
+.logo-img{width:64px;height:64px;flex:none;object-fit:contain}
+.logo-text b{display:block;font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:1px;line-height:1}
+.logo-text small{display:block;font-size:11px;letter-spacing:3.2px;text-transform:uppercase;color:var(--gold);margin-top:5px}
+.nav{display:flex;gap:30px}
+.nav a{color:#dfe5ee;font-weight:600;font-size:15.5px;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:.25s}
+.nav a:hover{color:var(--gold-2)}
+.nav a:hover::after{width:100%}
+.header .btn{padding:12px 22px;font-size:15px}
+.burger{display:none;background:none;border:0;color:#fff;cursor:pointer;padding:6px}
+.burger svg{width:30px;height:30px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:calc(100vh - 120px);min-height:max(640px,calc(100svh - 120px));display:flex;align-items:center;color:#fff;overflow:hidden;background:var(--navy)}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media img{animation:kenburns 26s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,15,25,.88) 0%,rgba(7,15,25,.62) 50%,rgba(7,15,25,.25) 100%),linear-gradient(0deg,rgba(7,15,25,.7),transparent 40%)}
+.hero .container{position:relative;z-index:2;padding:80px 0 150px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border:1px solid rgba(201,162,74,.6);border-radius:999px;background:rgba(11,22,36,.5);font-size:14.5px;font-weight:600;color:var(--gold-2);margin-bottom:26px}
+.hero-badge svg{width:18px;height:18px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6vw,76px);line-height:1.08;max-width:820px;margin-bottom:24px}
+.hero h1 em{color:var(--gold-2);font-style:italic;font-weight:500}
+.hero p{font-size:clamp(18px,1.6vw,21px);color:#d6dde7;max-width:620px;margin-bottom:38px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px}
+.hero-stats{position:absolute;left:0;right:0;bottom:0;z-index:2;background:rgba(7,15,25,.72);backdrop-filter:blur(8px);border-top:1px solid rgba(201,162,74,.35)}
+.hero-stats .container{display:grid;grid-template-columns:repeat(4,1fr);padding:0}
+.stat{padding:24px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-size:clamp(28px,3vw,40px);color:var(--gold-2);line-height:1.1}
+.stat span{font-size:14.5px;color:#b9c3d0}
+
+/* ---------- partners ---------- */
+.partners{background:var(--cream);padding:34px 0;border-bottom:1px solid var(--cream-2)}
+.partners .container{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center}
+.partners p{text-align:center;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.partner-logos{display:flex;gap:44px;flex-wrap:wrap;justify-content:center;align-items:center}
+.partner-logos span{font-weight:800;font-size:22px;color:#8a8f99;letter-spacing:.5px;opacity:.85}
+
+/* ---------- letter from Alina ---------- */
+.letter{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+.letter-photo{position:relative;width:100%;max-width:470px;justify-self:center}
+.letter-photo .frame{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow);background:var(--navy-2)}
+.letter-photo .frame:not(.missing){background:#f7f1e6}
+/* фото в полный рост: рамка по пропорциям снимка (796×1280) */
+.letter-photo .frame:not(.missing){aspect-ratio:796/1280}
+.letter-photo .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.letter-photo::before{content:"";position:absolute;inset:-18px 18px 18px -18px;border:2px solid var(--gold);border-radius:var(--radius);z-index:-1}
+.letter-tag{position:absolute;left:-22px;bottom:90px;background:var(--navy);color:#fff;padding:18px 22px;border-radius:14px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center;border:1px solid rgba(201,162,74,.5)}
+.letter-tag svg{width:40px;height:40px;color:var(--gold)}
+.letter-tag b{display:block;font-size:17px}
+.letter-tag span{font-size:13.5px;color:#b7c0cd}
+.letter-text blockquote{font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);line-height:1.45;color:var(--navy);font-style:italic;margin:10px 0 26px;padding-left:24px;border-left:3px solid var(--gold)}
+.letter-text p{color:var(--muted);margin-bottom:16px}
+.guarantees{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:28px 0 34px}
+.guarantees li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--ink);font-size:16.5px;line-height:1.45}
+.guarantees svg{flex:none;width:24px;height:24px;color:var(--gold-dark);margin-top:1px}
+.signature{display:flex;align-items:center;gap:18px}
+.signature .sig{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--gold-dark)}
+.signature small{display:block;color:var(--muted);font-size:14.5px;line-height:1.4}
+
+/* ---------- awards ---------- */
+.awards-wrap{position:relative;overflow:hidden}
+.awards-wrap::before{content:"";position:absolute;width:900px;height:900px;left:50%;top:-420px;transform:translateX(-50%);background:radial-gradient(circle,rgba(201,162,74,.22),transparent 65%);pointer-events:none}
+.awards{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:60px;position:relative}
+.award{display:grid;grid-template-columns:230px 1fr;gap:30px;align-items:center;background:linear-gradient(160deg,var(--navy-2),#0a1420);border:1px solid rgba(201,162,74,.35);border-radius:22px;padding:34px;transition:.3s}
+.award:hover{border-color:var(--gold);transform:translateY(-4px)}
+.award-img{aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(201,162,74,.28),transparent 70%),#0a1420;display:grid;place-items:center;position:relative}
+.award-img img{width:100%;height:100%;object-fit:cover}
+.award-year{display:inline-block;font-size:13px;font-weight:800;letter-spacing:2px;color:var(--navy);background:var(--gold);padding:5px 12px;border-radius:6px;margin-bottom:14px}
+.award h3{font-family:var(--serif);font-size:26px;color:#fff;line-height:1.25;margin-bottom:12px}
+.award .from{font-size:15px;color:var(--gold-2);font-weight:700;margin-bottom:12px}
+.award p{font-size:16px;color:#b7c0cd}
+
+/* placeholders when image file is missing */
+.ph{position:relative}
+.ph.missing img{display:none}
+.ph.missing::after{content:attr(data-label);white-space:pre-line;position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;font-size:14px;font-weight:600;color:rgba(201,162,74,.9);background:repeating-linear-gradient(45deg,rgba(201,162,74,.06) 0 12px,transparent 12px 24px);border:1.5px dashed rgba(201,162,74,.55);border-radius:inherit}
+.ph.missing .ph-icon{display:block}
+.ph-icon{display:none;position:absolute;top:28%;left:50%;transform:translateX(-50%);width:64px;height:64px;color:var(--gold);opacity:.6;z-index:1}
+
+/* ---------- why us ---------- */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px}
+.feature{background:#fff;border:1px solid var(--cream-2);border-radius:var(--radius);padding:34px 30px;transition:.3s}
+.feature:hover{box-shadow:var(--shadow);transform:translateY(-4px);border-color:transparent}
+.feature .ic{width:62px;height:62px;border-radius:16px;display:grid;place-items:center;background:var(--navy);color:var(--gold);margin-bottom:22px}
+.feature .ic svg{width:30px;height:30px}
+.feature h3{font-size:21px;color:var(--navy);margin-bottom:10px;line-height:1.3}
+.feature p{font-size:16.5px;color:var(--muted)}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:60px;counter-reset:s;position:relative}
+.steps::before{content:"";position:absolute;top:34px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.step{text-align:center;position:relative}
+.step .num{width:70px;height:70px;margin:0 auto 20px;border-radius:50%;background:var(--navy);color:var(--gold-2);border:2px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-weight:700;position:relative;z-index:1}
+.step h4{font-size:18px;color:var(--navy);margin-bottom:8px}
+.step p{font-size:15.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- reviews ---------- */
+.reviews-top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.rating-box{display:flex;align-items:center;gap:18px;background:#fff;border-radius:16px;padding:18px 24px;box-shadow:var(--shadow)}
+.rating-box b{font-family:var(--serif);font-size:44px;color:var(--navy);line-height:1}
+.stars{display:flex;gap:3px;color:var(--gold)}
+.stars svg{width:20px;height:20px}
+.rating-box small{display:block;font-size:14px;color:var(--muted)}
+.review-grid{columns:3;column-gap:22px;margin-top:50px}
+.review-shot{break-inside:avoid;margin-bottom:22px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 30px -15px rgba(11,22,36,.3);cursor:zoom-in;transition:.3s;min-height:220px}
+.review-shot:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.review-shot.missing{min-height:300px;cursor:default;background:#fff}
+.review-shot.missing::after{color:var(--gold-dark)}
+.review-cta{text-align:center;margin-top:34px}
+
+/* ---------- app ---------- */
+.app{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.app-features{list-style:none;margin:30px 0 36px;display:grid;gap:18px}
+.app-features li{display:flex;gap:16px;align-items:flex-start}
+.app-features .ic{flex:none;width:48px;height:48px;border-radius:12px;background:rgba(201,162,74,.14);color:var(--gold);display:grid;place-items:center}
+.app-features .ic svg{width:24px;height:24px}
+.app-features b{display:block;color:#fff;font-size:18px}
+.app-features span{font-size:16px;color:#b7c0cd}
+.stores{display:flex;gap:14px;flex-wrap:wrap}
+.store{display:flex;align-items:center;gap:12px;background:#000;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:12px;padding:10px 20px;transition:.25s}
+.store:hover{border-color:var(--gold);transform:translateY(-2px)}
+.store svg{width:28px;height:28px}
+.store small{display:block;font-size:11px;opacity:.8;line-height:1.2}
+.store b{display:block;font-size:18px;line-height:1.2}
+.phone{width:290px;margin:0 auto;border-radius:44px;background:#05090f;padding:12px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 2px rgba(201,162,74,.5);position:relative}
+.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:90px;height:24px;background:#05090f;border-radius:20px;z-index:3}
+.screen{position:relative;width:100%;aspect-ratio:1080/2250;padding-top:34px;border-radius:34px;overflow:hidden;background:linear-gradient(170deg,var(--navy-3),var(--navy))}
+.screen:not(.missing){background:#f4f8fc}
+.screen img{width:100%;height:100%;object-fit:cover;object-position:top}
+.screen-ui{position:absolute;inset:0;padding:60px 18px 18px;display:flex;flex-direction:column;gap:12px;color:#fff;font-size:13px}
+.screen:not(.missing) .screen-ui{display:none}
+.screen-ui .hi{font-family:var(--serif);font-size:20px}
+.screen-ui .card{background:rgba(255,255,255,.07);border:1px solid rgba(201,162,74,.35);border-radius:14px;padding:14px}
+.screen-ui .card b{display:block;color:var(--gold-2);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.screen-ui .qr{height:88px;border-radius:10px;margin-top:8px;background:repeating-linear-gradient(90deg,#fff 0 3px,transparent 3px 6px),repeating-linear-gradient(0deg,#fff 0 3px,transparent 3px 7px);opacity:.85;background-color:#0000}
+.app-visual{position:relative}
+.app-visual::before{content:"";position:absolute;width:420px;height:420px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(201,162,74,.3),transparent 65%)}
+
+/* ---------- socials ---------- */
+.social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:54px}
+.social{display:flex;flex-direction:column;gap:14px;padding:30px 26px;border-radius:var(--radius);background:#fff;border:1px solid var(--cream-2);transition:.3s}
+.social:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.social .ic{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;color:#fff}
+.social .ic svg{width:30px;height:30px}
+.social h4{font-size:20px;color:var(--navy)}
+.social p{font-size:15.5px;color:var(--muted);flex:1}
+.social .go{font-weight:700;font-size:15px;color:var(--gold-dark);display:flex;align-items:center;gap:6px}
+.fb{background:#1877f2}.fbg{background:#0f5fc9}.ig{background:linear-gradient(45deg,#f9a825,#e1306c 50%,#833ab4)}.yt{background:#ff0000}
+
+/* ---------- contact ---------- */
+.contact{position:relative;overflow:hidden;background:linear-gradient(120deg,rgba(7,15,25,.94),rgba(17,33,58,.9)),url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=70') center/cover}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.contact-list{list-style:none;display:grid;gap:18px;margin-top:30px}
+.contact-list li{display:flex;gap:14px;align-items:center;font-size:18px}
+.contact-list svg{width:24px;height:24px;color:var(--gold);flex:none}
+.contact-list a:hover{color:var(--gold-2)}
+.form{background:#fff;border-radius:22px;padding:40px;color:var(--ink);box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
+.form h3{font-family:var(--serif);font-size:30px;color:var(--navy);margin-bottom:6px}
+.form>p{color:var(--muted);font-size:16px;margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:14.5px;font-weight:700;margin-bottom:6px;color:var(--navy)}
+.field input,.field select{width:100%;padding:15px 16px;font:inherit;font-size:17px;border:1.5px solid #d9dde4;border-radius:12px;background:#fafbfc;transition:.2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);background:#fff}
+.form .btn{width:100%;margin-top:8px}
+.form small{display:block;text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px}
+
+/* ---------- footer ---------- */
+.footer{background:#060d16;color:#98a3b3;padding:60px 0 30px;font-size:15.5px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer h5{color:#fff;font-size:16px;margin-bottom:16px;letter-spacing:.5px}
+.footer ul{list-style:none;display:grid;gap:10px}
+.footer a:hover{color:var(--gold-2)}
+.footer .logo{margin-bottom:18px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px}
+
+
+/* ---------- lightbox ---------- */
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(5,9,15,.92);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-height:90vh;max-width:min(900px,100%);border-radius:12px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .nav{display:none}
+  .burger{display:block}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:84px;left:0;right:0;background:var(--navy);padding:20px 24px 28px;gap:6px;border-bottom:1px solid rgba(201,162,74,.35)}
+  .nav.open a{font-size:18px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .award{grid-template-columns:1fr}
+  .award-img{max-width:260px}
+  .features{grid-template-columns:1fr 1fr}
+  .social-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .section{padding:72px 0}
+  .letter,.app,.contact-grid{grid-template-columns:1fr;gap:50px}
+  .letter-photo{max-width:480px;margin:0 20px}
+  .letter-tag{left:-10px}
+  .awards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px;text-align:left}
+  .steps::before{display:none}
+  .step{display:grid;grid-template-columns:70px 1fr;gap:18px;text-align:left;align-items:start}
+  .step .num{margin:0}
+  .review-grid{columns:2}
+  .header .btn{display:none}
+  .topbar-left span:nth-child(2){display:none}
+}
+@media (max-width:640px){
+  body{font-size:17px}
+  .hero{flex-direction:column;align-items:stretch;min-height:0}
+  .hero .container{padding:50px 0 40px}
+  .hero-stats{position:relative}
+  .hero h1{font-size:34px}
+  .hero h1 br{display:none}
+  .hero-stats .container{grid-template-columns:1fr 1fr}
+  .stat{padding:16px 10px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .stat:nth-child(2){border-right:0}
+  .hero-actions .btn{width:100%}
+  .features,.social-grid,.footer-grid{grid-template-columns:1fr}
+  .guarantees{grid-template-columns:1fr}
+  .review-grid{columns:1}
+  .form{padding:28px 22px}
+  .topbar .socials-mini{display:none}
+  .logo-text b{font-size:20px}
+  .logo-text small{font-size:9.5px;letter-spacing:2.4px}
+  .award{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-media img{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></g></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 16a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 16a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"/><path d="M18 18v1a3 3 0 0 1-3 3h-3"/></g></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></g></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></g></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></g></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/><path d="M13 5v2M13 11v2M13 17v2"/></g></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></g></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path fill="currentColor" d="M6 2h12a1 1 0 0 1 1 1v19l-7-4.5L5 22V3a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.8a3.1 3.1 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.3zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 20.5 3.5z"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></symbol>
+  <symbol id="i-group" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></g></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9a4.8 4.8 0 0 0-3.8-2c-1.6-.2-3.1.9-3.9.9s-2-.9-3.4-.9a5 5 0 0 0-4.2 2.6c-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.6s1.7-.8 3.3-.8 2 .8 3.4.8 2.2-1.3 3-2.5a10 10 0 0 0 1.4-2.8 4.4 4.4 0 0 1-2.4-4.2zM13.9 5a4.4 4.4 0 0 0 1-3.2 4.5 4.5 0 0 0-2.9 1.5 4.2 4.2 0 0 0-1 3.1A3.7 3.7 0 0 0 13.9 5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="#4285F4" d="M3.6 1.8c-.3.3-.4.7-.4 1.3v17.8c0 .5.1 1 .4 1.3l.1.1 10-10v-.2z"/><path fill="#FBBC04" d="M17 15.7l-3.3-3.3v-.2L17 8.8l.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-4 2.3z"/><path fill="#EA4335" d="M17.1 15.6 13.7 12 3.6 22.2c.4.4 1 .4 1.7 0l11.8-6.6"/><path fill="#34A853" d="M17.1 8.4 5.3 1.8c-.7-.4-1.3-.4-1.7.1L13.7 12z"/></symbol>
+</svg>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span><svg><use href="#i-phone"/></svg><a data-link="phone" data-text="phoneText" href="#"></a></span>
+      <span><svg><use href="#i-clock"/></svg>Поддержка туристов 24/7</span>
+    </div>
+    <div class="socials-mini">
+      <a data-link="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+      <a data-link="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+      <a data-link="youtube" href="#" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="container">
+    <a href="#top" class="logo" aria-label="TwA — Travel with Alina">
+      <img class="logo-img" src="assets/logo-gold.png" alt="TwA — Travel with Alina">
+      <span class="logo-text"><b>TwA</b><small>Travel with Alina</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#about">О нас</a>
+      <a href="#awards">Награды</a>
+      <a href="#why">Почему мы</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#app">Приложение</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#contacts" class="btn btn-gold">Подобрать тур</a>
+    <button class="burger" id="burger" aria-label="Меню"><svg><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO (видео на фоне) ============ -->
+<section class="hero">
+  <div class="hero-media">
+    <!-- Фото показывается, пока видео не загрузилось (или если видео нет) -->
+    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2000&q=70" alt="">
+    <!-- Положите своё видео в assets/hero.mp4 (10–30 сек, без звука, до 8–10 МБ) -->
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" style="opacity:0;transition:opacity 1s">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container">
+    <div class="hero-badge reveal"><svg><use href="#i-trophy"/></svg>Лидер продаж по версии туроператоров</div>
+    <h1 class="reveal">С нами ваш отдых — <br><em>в надёжных руках</em></h1>
+    <p class="reveal">TwA — Travel with Alina. Подбираем и бронируем туры по всему миру, сопровождаем вас от первой консультации до возвращения домой. Лично отвечаем за каждого туриста.</p>
+    <div class="hero-actions reveal">
+      <a href="#contacts" class="btn btn-gold">Подобрать тур бесплатно <svg><use href="#i-arrow"/></svg></a>
+      <a href="#awards" class="btn btn-outline">Наши награды</a>
+    </div>
+  </div>
+  <!-- ЗАМЕНИТЕ цифры на реальные -->
+  <div class="hero-stats">
+    <div class="container">
+      <div class="stat"><b data-count="5000" data-suffix="+">0</b><span>довольных туристов</span></div>
+      <div class="stat"><b data-count="7" data-suffix=" лет">0</b><span>на рынке туризма</span></div>
+      <div class="stat"><b data-count="2">0</b><span>награды от туроператоров</span></div>
+      <div class="stat"><b>24/7</b><span>поддержка в поездке</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПАРТНЁРЫ ============ -->
+<!-- ПРОВЕРЬТЕ список партнёров-туроператоров -->
+<section class="partners">
+  <div class="container">
+    <p>Официальный партнёр туроператоров</p>
+    <div class="partner-logos">
+      <span>ANEX TOUR</span>
+      <span>KOMPAS</span>
+      <span>CORAL TRAVEL</span>
+      <span>TPG</span>
+      <span>PEGAS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОБРАЩЕНИЕ АЛИНЫ ============ -->
+<section class="section" id="about">
+  <div class="container letter">
+    <div class="letter-photo reveal">
+      <div class="frame ph" data-label="Фото Алины с наградами&#10;(assets/alina.jpg)">
+        <img src="assets/alina.jpg" alt="Алина — основатель TwA — с наградами туроператоров">
+      </div>
+      <div class="letter-tag">
+        <svg><use href="#i-trophy"/></svg>
+        <div><b>Алина</b><span>Основатель TwA</span></div>
+      </div>
+    </div>
+    <div class="letter-text reveal">
+      <span class="eyebrow">Обращение основателя</span>
+      <h2 class="h2">Я лично отвечаю за ваш отдых</h2>
+      <blockquote>«Для меня каждый турист — это не заявка, а человек, который доверил нам самое ценное: своё время, свой отпуск и своих близких.»</blockquote>
+      <p>Меня зовут Алина, я основатель агентства TwA — Travel with Alina. Мы начинали с нескольких туров для друзей и знакомых, а сегодня туроператоры называют нас лидерами продаж и вручают награды. Но главная наша награда — туристы, которые возвращаются к нам снова и приводят своих родных.</p>
+      <p>Поэтому я даю вам простые и честные гарантии:</p>
+      <ul class="guarantees">
+        <li><svg><use href="#i-check"/></svg>Работаем только с проверенными туроператорами</li>
+        <li><svg><use href="#i-check"/></svg>Официальный договор и чек на каждый тур</li>
+        <li><svg><use href="#i-check"/></svg>Все документы — в приложении и в Facebook</li>
+        <li><svg><use href="#i-check"/></svg>На связи 24/7, пока вы на отдыхе</li>
+        <li><svg><use href="#i-check"/></svg>Честная цена без скрытых доплат</li>
+        <li><svg><use href="#i-check"/></svg>Решаем любые вопросы с отелем и перелётом</li>
+      </ul>
+      <div class="signature">
+        <span class="sig">Алина</span>
+        <small>Основатель и руководитель<br>TwA — Travel with Alina</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ НАГРАДЫ ============ -->
+<section class="section dark awards-wrap" id="awards">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Признание</span>
+      <h2 class="h2">Наши награды</h2>
+      <p class="lead">Туроператоры отмечают лучших агентов по объёму продаж и качеству работы с туристами. Эти награды — подтверждение того, что нам доверяют тысячи людей.</p>
+    </div>
+    <div class="awards">
+      <!-- ЗАМЕНИТЕ: название награды, туроператора, год и фото статуэтки -->
+      <article class="award reveal">
+        <div class="award-img ph" data-label="Фото статуэтки №1&#10;(assets/award-1.png)">
+          <svg class="ph-icon"><use href="#i-trophy"/></svg>
+          <img src="assets/award-1.png" alt="Награда «Лидер продаж»">
+        </div>
+        <div>
+          <span class="award-year">2025</span>
+          <h3>«Лидер продаж года»</h3>
+          <div class="from">Вручена туроператором ANEX TOUR</div>
+          <p>Награда за наибольшее количество проданных туров среди агентств-партнёров. Нам доверили свой отдых больше туристов, чем любому другому агентству сети.</p>
+        </div>
+      </article>
+      <article class="award reveal">
+        <div class="award-img ph" data-label="Фото статуэтки №2&#10;(assets/award-2.png)">
+          <svg class="ph-icon"><use href="#i-trophy"/></svg>
+          <img src="assets/award-2.png" alt="Награда «Best Seller» от KOMPAS">
+        </div>
+        <div>
+          <span class="award-year">2024</span>
+          <h3>«Best Seller»</h3>
+          <div class="from">Вручена туроператором KOMPAS</div>
+          <p>Статуэтка лучшему продавцу туров — за объём продаж, высокий уровень сервиса и профессиональное сопровождение туристов.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПОЧЕМУ МЫ ============ -->
+<section class="section cream" id="why">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Почему выбирают нас</span>
+      <h2 class="h2">Спокойствие на каждом этапе поездки</h2>
+      <p class="lead">Вы отдыхаете — мы занимаемся всем остальным. Вот что вы получаете, бронируя тур у TwA.</p>
+    </div>
+    <div class="features">
+      <div class="feature reveal"><div class="ic"><svg><use href="#i-shield"/></svg></div><h3>Надёжность и гарантии</h3><p>Бронируем только у крупных, проверенных туроператоров. Ваши деньги и ваш тур под защитой.</p></div>
+      <div class="feature reveal"><div class="ic"><svg><use href="#i-headset"/></svg></div><h3>Поддержка 24/7</h3><p>Задержали рейс или что-то не так в отеле — пишите в любое время, мы на связи и решаем вопрос.</p></div>
+      <div class="feature reveal"><div class="ic"><svg><use href="#i-doc"/></svg></div><h3>Все документы под рукой</h3><p>Ваучер, посадочный талон и страховка — в нашем приложении и продублированы в Facebook.</p></div>
+      <div class="feature reveal"><div class="ic"><svg><use href="#i-wallet"/></svg></div><h3>Честные цены</h3><p>Цена тура такая же, как у туроператора, или ниже. Без скрытых комиссий и неожиданных доплат.</p></div>
+      <div class="feature reveal"><div class="ic"><svg><use href="#i-globe"/></svg></div><h3>Отдых по всему миру</h3><p>Турция, Египет, ОАЭ, Европа, экзотика — подберём отель под ваш бюджет и пожелания.</p></div>
+      <div class="feature reveal"><div class="ic"><svg><use href="#i-heart"/></svg></div><h3>Личный подход</h3><p>Отдых с детьми, с родителями, романтическая поездка — учитываем всё, что важно именно вам.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КАК МЫ РАБОТАЕМ ============ -->
+<section class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Как мы работаем</span>
+      <h2 class="h2">Пять шагов до вашего отпуска</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><div><h4>Заявка</h4><p>Вы пишете нам в WhatsApp или оставляете заявку на сайте</p></div></div>
+      <div class="step reveal"><div class="num">2</div><div><h4>Подбор</h4><p>Подбираем 3–5 лучших вариантов под ваш бюджет</p></div></div>
+      <div class="step reveal"><div class="num">3</div><div><h4>Бронирование</h4><p>Оформляем тур, договор и оплату официально</p></div></div>
+      <div class="step reveal"><div class="num">4</div><div><h4>Документы</h4><p>Ваучер и билеты — в приложении и в Facebook</p></div></div>
+      <div class="step reveal"><div class="num">5</div><div><h4>Отдых</h4><p>Вы отдыхаете, а мы на связи 24/7 до возвращения</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОТЗЫВЫ ============ -->
+<section class="section cream" id="reviews">
+  <div class="container">
+    <div class="reviews-top reveal">
+      <div>
+        <span class="eyebrow">Отзывы туристов</span>
+        <h2 class="h2">Нам доверяют — и возвращаются</h2>
+        <p class="lead">Настоящие отзывы наших туристов из группы Facebook — с фотографиями из поездок.</p>
+      </div>
+      <div class="rating-box">
+        <b>4.9</b>
+        <div>
+          <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <small>средняя оценка туристов</small>
+        </div>
+      </div>
+    </div>
+    <!-- Скриншоты отзывов: положите файлы assets/reviews/1.jpg … 6.jpg -->
+    <div class="review-grid" id="reviewGrid">
+      <div class="review-shot ph reveal" data-label="Скриншот отзыва №1&#10;assets/reviews/1.jpg"><img src="assets/reviews/1.jpg" alt="Отзыв туриста" loading="lazy"></div>
+      <div class="review-shot ph reveal" data-label="Скриншот отзыва №2&#10;assets/reviews/2.jpg"><img src="assets/reviews/2.jpg" alt="Отзыв туриста" loading="lazy"></div>
+      <div class="review-shot ph reveal" data-label="Скриншот отзыва №3&#10;assets/reviews/3.jpg"><img src="assets/reviews/3.jpg" alt="Отзыв туриста" loading="lazy"></div>
+      <div class="review-shot ph reveal" data-label="Скриншот отзыва №4&#10;assets/reviews/4.jpg"><img src="assets/reviews/4.jpg" alt="Отзыв туриста" loading="lazy"></div>
+      <div class="review-shot ph reveal" data-label="Скриншот отзыва №5&#10;assets/reviews/5.jpg"><img src="assets/reviews/5.jpg" alt="Отзыв туриста" loading="lazy"></div>
+      <div class="review-shot ph reveal" data-label="Скриншот отзыва №6&#10;assets/reviews/6.jpg"><img src="assets/reviews/6.jpg" alt="Отзыв туриста" loading="lazy"></div>
+    </div>
+    <div class="review-cta">
+      <a data-link="facebookGroup" href="#" target="_blank" rel="noopener" class="btn btn-dark"><svg><use href="#i-fb"/></svg>Читать все отзывы в группе Facebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПРИЛОЖЕНИЕ ============ -->
+<section class="section dark" id="app">
+  <div class="container app">
+    <div class="reveal">
+      <span class="eyebrow">Мобильное приложение</span>
+      <h2 class="h2">Ваш отпуск — в вашем телефоне</h2>
+      <p class="lead">У TwA есть собственное приложение. Скачайте его один раз — и все документы по поездке всегда будут у вас под рукой, даже без интернета.</p>
+      <ul class="app-features">
+        <li><span class="ic"><svg><use href="#i-ticket"/></svg></span><div><b>Ваучер и посадочный талон</b><span>Откройте в аэропорту или в отеле в одно касание</span></div></li>
+        <li><span class="ic"><svg><use href="#i-bell"/></svg></span><div><b>Напоминания о вылете</b><span>Время трансфера, регистрации и вылета — без сюрпризов</span></div></li>
+        <li><span class="ic"><svg><use href="#i-chat"/></svg></span><div><b>Связь с менеджером</b><span>Быстрая помощь в любой момент поездки</span></div></li>
+      </ul>
+      <div class="stores">
+        <a class="store" data-link="appStore" href="#" target="_blank" rel="noopener"><svg><use href="#i-apple"/></svg><div><small>Загрузите в</small><b>App Store</b></div></a>
+        <a class="store" data-link="googlePlay" href="#" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg><div><small>Доступно в</small><b>Google Play</b></div></a>
+      </div>
+    </div>
+    <div class="app-visual reveal">
+      <div class="phone">
+        <!-- Скриншот приложения: assets/app.png (1080×2114) -->
+        <div class="screen ph">
+          <img src="assets/app.png" alt="Главный экран приложения TwA">
+          <div class="screen-ui">
+            <div class="hi">Добрый день! ☀️</div>
+            <div class="card"><b>Ваш тур</b>Анталия, Турция<br>14 — 24 июня · 5★ All Inclusive</div>
+            <div class="card"><b>Посадочный талон</b>Рейс PS 781 · Место 12A<div class="qr"></div></div>
+            <div class="card"><b>Ваучер отеля</b>Открыть документ →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СОЦСЕТИ ============ -->
+<section class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Мы открыты</span>
+      <h2 class="h2">Следите за нами в соцсетях</h2>
+      <p class="lead">Горящие туры, фото и видео из поездок наших туристов, живые отзывы и полезные советы.</p>
+    </div>
+    <div class="social-grid">
+      <a class="social reveal" data-link="facebook" href="#" target="_blank" rel="noopener"><span class="ic fb"><svg><use href="#i-fb"/></svg></span><h4>Страница Facebook</h4><p>Новости агентства, акции и горящие предложения</p><span class="go">Перейти <svg width="18" height="18"><use href="#i-arrow"/></svg></span></a>
+      <a class="social reveal" data-link="facebookGroup" href="#" target="_blank" rel="noopener"><span class="ic fbg"><svg><use href="#i-group"/></svg></span><h4>Группа Facebook</h4><p>Отзывы туристов с фото и общение с нами напрямую</p><span class="go">Вступить <svg width="18" height="18"><use href="#i-arrow"/></svg></span></a>
+      <a class="social reveal" data-link="instagram" href="#" target="_blank" rel="noopener"><span class="ic ig"><svg><use href="#i-ig"/></svg></span><h4>Instagram</h4><p>Красивые места, отели и истории из поездок</p><span class="go">Подписаться <svg width="18" height="18"><use href="#i-arrow"/></svg></span></a>
+      <a class="social reveal" data-link="youtube" href="#" target="_blank" rel="noopener"><span class="ic yt"><svg><use href="#i-yt"/></svg></span><h4>YouTube</h4><p>Видеообзоры отелей и направлений от Алины</p><span class="go">Смотреть <svg width="18" height="18"><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КОНТАКТЫ / ЗАЯВКА ============ -->
+<section class="section contact dark" id="contacts">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Бесплатная консультация</span>
+      <h2 class="h2">Расскажите, о каком отдыхе вы мечтаете</h2>
+      <p class="lead">Оставьте заявку — менеджер свяжется с вами в течение 15 минут и подберёт лучшие варианты. Консультация ни к чему не обязывает.</p>
+      <ul class="contact-list">
+        <li><svg><use href="#i-phone"/></svg><a data-link="phone" data-text="phoneText" href="#"></a></li>
+        <li><svg><use href="#i-wa"/></svg><a data-link="whatsapp" href="#" target="_blank" rel="noopener">Написать в WhatsApp</a></li>
+        <li><svg><use href="#i-mail"/></svg><a data-link="email" data-text="emailText" href="#"></a></li>
+        <li><svg><use href="#i-pin"/></svg><span data-text="address"></span></li>
+      </ul>
+    </div>
+    <form class="form reveal" id="leadForm">
+      <h3>Подобрать тур</h3>
+      <p>Заявка откроется в WhatsApp — так быстрее всего.</p>
+      <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" name="name" required placeholder="Например, Ольга"></div>
+      <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" required placeholder="+___ __ ___ __ __"></div>
+      <div class="field"><label for="f-dest">Куда хотите поехать?</label>
+        <select id="f-dest" name="dest">
+          <option>Пока не знаю — помогите выбрать</option>
+          <option>Турция</option><option>Египет</option><option>ОАЭ</option>
+          <option>Европа</option><option>Экзотика (Мальдивы, Таиланд, Бали)</option>
+        </select>
+      </div>
+      <button class="btn btn-gold" type="submit"><svg><use href="#i-wa"/></svg>Отправить заявку</button>
+      <small>Нажимая кнопку, вы соглашаетесь на обработку персональных данных</small>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><img class="logo-img" src="assets/logo-gold.png" alt="TwA — Travel with Alina"><span class="logo-text"><b>TwA</b><small>Travel with Alina</small></span></a>
+        <p>Туристическое агентство, которому доверяют. Лидер продаж по версии туроператоров.</p>
+      </div>
+      <div>
+        <h5>Разделы</h5>
+        <ul><li><a href="#about">О нас</a></li><li><a href="#awards">Награды</a></li><li><a href="#reviews">Отзывы</a></li><li><a href="#app">Приложение</a></li></ul>
+      </div>
+      <div>
+        <h5>Соцсети</h5>
+        <ul><li><a data-link="facebook" href="#" target="_blank" rel="noopener">Facebook</a></li><li><a data-link="facebookGroup" href="#" target="_blank" rel="noopener">Группа Facebook</a></li><li><a data-link="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li><li><a data-link="youtube" href="#" target="_blank" rel="noopener">YouTube</a></li></ul>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <ul><li><a data-link="phone" data-text="phoneText" href="#"></a></li><li><a data-link="email" data-text="emailText" href="#"></a></li><li><span data-text="address"></span></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> TwA — Travel with Alina. Все права защищены.</span>
+      <span>Поддержка туристов 24/7</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+/* =========================================================
+   НАСТРОЙКИ — замените на реальные данные клиента
+   ========================================================= */
+const CONFIG = {
+  phoneText:     '+380 00 000 00 00',
+  phone:         'tel:+380000000000',
+  whatsappNumber:'380000000000',               // только цифры, без +
+  emailText:     'info@twa-travel.com',
+  email:         'mailto:info@twa-travel.com',
+  address:       'г. Киев, ул. Примерная, 1',
+  facebook:      'https://www.facebook.com/',
+  facebookGroup: 'https://www.facebook.com/groups/',
+  instagram:     'https://www.instagram.com/',
+  youtube:       'https://www.youtube.com/',
+  appStore:      'https://apps.apple.com/us/app/travel-with-alina/id6786763075',
+  googlePlay:    'https://play.google.com/store/apps/details?id=com.travelwithalina.app'
+};
+CONFIG.whatsapp = 'https://wa.me/' + CONFIG.whatsappNumber + '?text=' +
+  encodeURIComponent('Здравствуйте! Хочу подобрать тур.');
+
+document.querySelectorAll('[data-link]').forEach(el => {
+  const v = CONFIG[el.dataset.link]; if (v) el.href = v;
+});
+document.querySelectorAll('[data-text]').forEach(el => {
+  const v = CONFIG[el.dataset.text]; if (v) el.textContent = v;
+});
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Плейсхолдеры для ещё не добавленных фото */
+document.querySelectorAll('.ph img').forEach(img => {
+  const mark = () => img.closest('.ph').classList.add('missing');
+  if (img.complete && img.naturalWidth === 0) mark();
+  img.addEventListener('error', mark);
+});
+
+/* Фоновое видео: плавно показываем, когда загрузилось */
+const vid = document.getElementById('heroVideo');
+vid.addEventListener('canplay', () => { vid.style.opacity = 1; });
+
+/* Мобильное меню */
+const nav = document.getElementById('nav');
+document.getElementById('burger').addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+/* Появление блоков при прокрутке + счётчики */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    io.unobserve(e.target);
+  });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const countIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.count, suf = el.dataset.suffix || '';
+    const t0 = performance.now(), dur = 1600;
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1), val = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      el.textContent = val.toLocaleString('ru-RU') + suf;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    countIO.unobserve(el);
+  });
+}, { threshold: .5 });
+document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+/* Увеличение скриншотов отзывов */
+const lb = document.getElementById('lightbox');
+document.getElementById('reviewGrid').addEventListener('click', e => {
+  const shot = e.target.closest('.review-shot');
+  if (!shot || shot.classList.contains('missing')) return;
+  lb.querySelector('img').src = shot.querySelector('img').src;
+  lb.classList.add('open');
+});
+lb.addEventListener('click', () => lb.classList.remove('open'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+/* Заявка → WhatsApp */
+document.getElementById('leadForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  const text = `Здравствуйте! Заявка с сайта TwA.\nИмя: ${f.name.value}\nТелефон: ${f.phone.value}\nНаправление: ${f.dest.value}`;
+  window.open('https://wa.me/' + CONFIG.whatsappNumber + '?text=' + encodeURIComponent(text), '_blank');
+});
+</script>
+</body>
+</html>
